@@ -1,0 +1,9 @@
+{
+  "plantuml.render": "PlantUMLServer",
+  "plantuml.server": "http://localhost:8082",
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "cSpell.words": [
+    "tailwindcss"
+  ]
+}

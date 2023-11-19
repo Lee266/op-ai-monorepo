@@ -1,0 +1,18 @@
+@startuml postgres
+hide circle
+
+
+entity "users" as users {
+  id
+  --
+  username (string)
+  email (email, unique)
+  password (string)
+  last_login  (date)
+  is_superuser (number)
+  is_staff (number)
+  is_active (number)
+  created_at
+}
+
+@enduml
