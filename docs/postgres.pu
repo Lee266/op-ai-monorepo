@@ -1,3 +1,4 @@
+' Previewをみたい時はPlease ALT + Dを実行してください。
 @startuml postgres
 hide circle
 
