@@ -1,0 +1,82 @@
+version: '3'
+
+services:
+  next:
+    build:
+      context: .
+      dockerfile: docker/frontend/next/Dockerfile
+    container_name: ai_lab_next
+    volumes:
+      - ./client/:/usr/src/client
+    environment:
+      - NODE_ENV=development
+      - CHIKIDAR_USEPOLLING=ture
+    ports:
+      - "${FRONTEND_PORT}:3000"
+    command: yarn dev
+
+  golang:
+    # platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: docker/backend/golang/Dockerfile
+    container_name: ai_lab_golang
+    tty: true
+    volumes:
+      - ./server/:/go/src/github.com/Lee266/op-ai-server
+    ports:
+      - "${BACKEND_PORT}:8002"
+    depends_on:
+      - database
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: docker/python/Nvidia/Dockerfile
+    container_name: ai_lab_jupyter_gpu
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./ai-lab/:/usr/src/ai-lab
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+  database:
+    build:
+      context: ./docker/postgres
+      dockerfile: Dockerfile
+    container_name: ai_lab_database
+    volumes:
+      - db-store:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_DB: ${DATABASE_DB}
+    ports:
+      - "${HOST_MACHINE_DATABASE_PORT}:5432"
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: ai_lab_adminer
+    environment:
+      - ADMINER_DEFAULT_SERVER=database
+      - ADMINER_DESIGN=ng9
+    ports:
+      - "${DATABASE_ADMIN_PORT}:8080"
+    depends_on:
+      - database
+
+  plantuml-server:
+    image: plantuml/plantuml-server
+    container_name: ai_lab_plantuml
+    ports:
+      - "${PLANTUML_PORT}:8080"
+
+volumes:
+  db-store:
