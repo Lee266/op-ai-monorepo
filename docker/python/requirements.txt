@@ -1,0 +1,15 @@
+ipython
+numpy==1.24.4
+pandas
+matplotlib==3.7.1
+# pretrained modelのライブラリ
+timm
+#画像処理
+opencv-python
+pillow
+pytorch-gradcam
+# Datasets
+kaggle
+# api関係
+# request
+python-dotenv
