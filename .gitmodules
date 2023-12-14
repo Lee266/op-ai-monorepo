@@ -1,0 +1,9 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/Lee266/op-ai-web-client/tree/develop
+[submodule "server"]
+	path = server
+	url = https://github.com/Lee266/op-ai-server
+[submodule "ai-lab"]
+	path = ai-lab
+	url = https://github.com/Lee266/op-ai-lab/tree/develop
