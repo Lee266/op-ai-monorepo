@@ -20,15 +20,13 @@ RUN apt-get update && apt-get install -y \
     wget \
     libopencv-dev \
     libopencv-core-dev \
+    graphviz \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./docker/python/requirements.txt requirements.txt
 
 # # 必須ライブラリをインストール
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install torch torchvision torchaudio \
-    && pip install jupyterlab \
-    && pip install scikit-learn \
     && pip install -r requirements.txt
 
 # アプリケーションのソースコードをコピー

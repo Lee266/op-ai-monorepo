@@ -1,9 +1,17 @@
+torch==2.1.2
+torchvision==0.16.0
+torchaudio
+pytorch-gradcam
+jupyterlab
+scikit-learn
+einops
+
 ipython
 numpy==1.24.4
 pandas
 matplotlib==3.7.1
 # pretrained modelのライブラリ
-timm
+timm==0.6.12
 #画像処理
 opencv-python
 pillow
@@ -13,3 +21,13 @@ kaggle
 # api関係
 # request
 python-dotenv
+# pytorchのモデルの自動作図
+torchviz
+torchinfo
+
+selenium
+google_images_search
+google_images_download
+beautifulsoup4
+webdriver-manager
+requests
