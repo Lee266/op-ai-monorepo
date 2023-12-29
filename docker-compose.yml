@@ -21,6 +21,8 @@ services:
       context: .
       dockerfile: docker/backend/golang/Dockerfile
     container_name: ai_lab_golang
+    env_file:
+      - ./server/.env
     tty: true
     volumes:
       - ./server/:/go/src/github.com/Lee266/op-ai-server
@@ -29,10 +31,20 @@ services:
     depends_on:
       - database
 
+  flask:
+    build:
+      context: .
+      dockerfile: docker/python/flask/Dockerfile
+    container_name: ai_lab_flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ai-lab/:/usr/src/ai-lab
+
   jupyter:
     build:
       context: .
-      dockerfile: docker/python/Nvidia/Dockerfile
+      dockerfile: docker/python/nvidia/Dockerfile
     container_name: ai_lab_jupyter_gpu
     ports:
       - "8888:8888"
