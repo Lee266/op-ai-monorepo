@@ -1,33 +1,38 @@
-torch==2.1.2
-torchvision==0.16.0
-torchaudio
-pytorch-gradcam
-jupyterlab
-scikit-learn
-einops
-
-ipython
+# ベースライブラリ
 numpy==1.24.4
 pandas
-matplotlib==3.7.1
-# pretrained modelのライブラリ
-timm==0.6.12
-#画像処理
+scikit-learn
+
+# 画像処理関連
 opencv-python
 pillow
 pytorch-gradcam
-# Datasets
-kaggle
-# api関係
-# request
-python-dotenv
-# pytorchのモデルの自動作図
-torchviz
-torchinfo
 
-selenium
-google_images_search
-google_images_download
+# 深層学習フレームワーク関連
+torch==2.1.2
+torchaudio
+torchvision==0.16.0
+timm==0.6.12
+torchinfo
+torchviz
+
+# グラフ描画
+matplotlib==3.7.1
+
+# オートメーション・API関連
 beautifulsoup4
-webdriver-manager
+google_images_download
+google_images_search
+python-dotenv
 requests
+selenium
+webdriver-manager
+
+# インタラクティブ開発
+ipython
+jupyterlab
+
+# その他
+einops
+kaggle
+pytorch-gradcam
