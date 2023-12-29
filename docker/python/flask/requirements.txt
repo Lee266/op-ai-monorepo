@@ -1,0 +1,21 @@
+# ベースライブラリ
+numpy==1.24.4
+pandas
+
+# Webフレームワーク
+flask
+
+# Flask拡張
+Flask-WTF
+Flask-RESTful
+
+# 深層学習フレームワーク関連
+torch
+torchvision
+timm==0.6.12
+
+python-dotenv
+requests
+
+# インタラクティブ開発
+ipython
