@@ -8,7 +8,6 @@ COPY ./client/package.json ./client/yarn.lock ./
 
 RUN corepack enable
 RUN yarn install
-# RUN yarn build
 
 COPY ./client/src ./
 

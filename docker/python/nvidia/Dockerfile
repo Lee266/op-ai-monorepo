@@ -12,7 +12,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN apt-get update && apt-get install -y \
     python3.10 \
     python3-dev \
-#     python3-distutils \
     python3-pip \
     python3-setuptools \
     python3-opencv \
@@ -25,7 +24,7 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./docker/python/requirements.txt requirements.txt
 
-# # 必須ライブラリをインストール
+# 必須ライブラリをインストール
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install -r requirements.txt
 

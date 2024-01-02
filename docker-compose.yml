@@ -20,6 +20,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend/golang/Dockerfile
+      target: dev
     container_name: ai_lab_golang
     env_file:
       - ./server/.env
