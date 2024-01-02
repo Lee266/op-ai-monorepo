@@ -1,0 +1,52 @@
+@startuml models practices
+' 学習の自動化
+start
+:Main script;
+
+if (train) then (yes)
+  if (Vision Transformer)
+    :main.ipynb;
+  (done) elseif (Swin Transformer)
+    :main.ipynb;
+  (done) elseif (VGG 19)
+    :main.ipynb;
+  (done) elseif (ResNet 101)
+    :main.ipynb;
+  endif
+
+  :slack notification;
+  stop
+
+(done) elseif (visualization) then (yes)
+  if (Vision Transformer)
+    :visualization.ipynb;
+  (done) elseif (Swin Transformer)
+    :visualization.ipynb;
+  (done) elseif (VGG 19)
+    :visualization.ipynb;
+  (done) elseif (ResNet 101)
+    :visualization.ipynb;
+  endif
+
+  :slack notification;
+  stop
+
+(done) elseif (evaluate) then (yes)
+  if (Vision Transformer)
+    :evaluate.ipynb;
+  (done) elseif (Swin Transformer)
+    :evaluate.ipynb;
+  (done) elseif (VGG 19)
+    :evaluate.ipynb;
+  (done) elseif (ResNet 101)
+    :evaluate.ipynb;
+  endif
+
+  :slack notification;
+  stop
+
+endif
+
+stop
+@enduml
+
