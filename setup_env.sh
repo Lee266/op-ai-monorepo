@@ -1,19 +1,13 @@
 #!/bin/bash
 
-# op-ai-monorepo/.envの作成
-cp .env.example .env
+echo "op-ai-monorepoの.envファイルの作成"
+cp ./.env.example ./.env
 
-# op-ai-monorepo/client/.env.localの作成
-cd client
-cp .env.example .env.local
-cd ..
+echo "op-ai-monorepo/clientの.env.localの作成"
+cp ./client/.env.example ./client/.env.local
 
-# op-ai-monorepo/server/.envの作成
-cd server
-cp .env.example .env
-cd ..
+echo "op-ai-monorepo/serverの.envの作成"
+cp ./server/.env.example ./server/.env
 
-# op-ai-monorepo/ai-lab/.envの作成
-cd ai-lab
-cp .env.example .env
-cd ..
+echo "op-ai-monorepo/ai-lab/.envの作成"
+cp ./ai-lab/.env.example ./ai-lab/.env
