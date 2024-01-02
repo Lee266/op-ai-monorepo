@@ -1,9 +1,10 @@
+#　各レポジトリとサブモジュールとして管理する
 [submodule "client"]
 	path = client
-	url = https://github.com/Lee266/op-ai-web-client/tree/develop
+	url = https://github.com/Lee266/op-ai-web-client
 [submodule "server"]
 	path = server
-	url = https://github.com/Lee266/op-ai-server/tree/develop
+	url = https://github.com/Lee266/op-ai-server
 [submodule "ai-lab"]
 	path = ai-lab
-	url = https://github.com/Lee266/op-ai-lab/tree/develop
+	url = https://github.com/Lee266/op-ai-lab
