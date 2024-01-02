@@ -1,4 +1,4 @@
-FROM golang:1.21
+FROM golang:1.21 AS base
 
 WORKDIR /go/src/github.com/Lee266/op-ai-server
 
@@ -8,8 +8,10 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/i
 
 COPY ./server/go.mod ./server/go.sum ./
 
-RUN go mod download && go mod verify
+RUN --mount=type=cache,target=/go/pkg/mod/ \
+    go mod download && go mod verify
 
+FROM base AS dev
 # 'rm -rf /var/lib/apt/lists/*'コマンドはイメージサイズを最小化するために使用
 RUN apt-get update && apt-get install -y \
     git \
@@ -23,11 +25,21 @@ RUN go get -u github.com/gin-gonic/gin && \
 RUN go install github.com/cosmtrek/air@latest && \
     go install golang.org/x/tools/cmd/goimports@latest
 
-RUN git config --local core.hooksPath .githooks
-
 COPY ./server ./
-
 CMD ["air", "-c", ".air.toml"]
-# FROM golang:1.21.3-alpine
-# RUN apk upgrade --update && \
-#     apk --no-cache add git gcc musl-dev
+
+FROM base AS builder
+
+COPY . .
+# scratch ユーザーを作成
+RUN useradd -u 10001 scratch
+RUN --mount=type=cache,target=/go/pkg/mod/ \
+    go build \
+    -o /app
+
+FROM scratch AS runner
+
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /app /app
+USER scratch
+CMD ["./app"]
