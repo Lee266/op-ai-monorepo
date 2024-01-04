@@ -5,11 +5,6 @@
 * このプロジェクトはAI labの親レポジトリです。何か都合がある場合を除きこのプロジェクトから始めてください。
 * 各レポジトリはWindowsを対象に書かれているので、他のOSを使用する場合は各自修正してください。
 
-## 必須環境
-
-* GPU搭載機器　(AIの開発のため)
-* Node.js
-
 ### 各レポジトリのリンク
 
 * [op-ai-monorepoのレポジトリ](https://github.com/Lee266/op-ai-monorepo)
@@ -17,20 +12,25 @@
 * [op-ai-serverのリポジトリ](https://github.com/Lee266/op-ai-server)
 * [op-ai-labのレポジトリ](https://github.com/Lee266/op-ai-lab)
 
+## 要件
+
+* GPU搭載機器　(AIの開発のため)
+* Node.js
+
 ## 準備
 
 * PlantUML
-  * クラス図の作成にPlantUMLを使用するため、VScodeの拡張機能のPlantUMLをインストールしてください。  
-    [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
-  * もし使用しない場合はdocker-compose.ymlのplantuml-serverをコメントアウトしてください。
-  * またdockerを起動後、PlantUMLを使用するには*.puファイルにでALT + Dのキーを同時に押すと使用出来ます。
+  * クラス図の作成などにPlantUMLを使用するため、VScodeの拡張機能のPlantUMLをインストールしてください。  
+    [PlantUML Install](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+  * もし使用しない場合はdocker-compose.ymlのplantuml-serverをコメントアウトまたはcompose時にplantuml-server=0を追加してください。
+  * Dockerを起動後、PlantUMLを使用するには*.puファイルにでALT + Dのキーを同時に押すと使用出来ます。
 
 * JupyterLab
-  * GPUなしの環境で使用する場合: GPUを搭載していないマシンを使用する場合、docker-compose.yml内のjupyterをコメントアウトしてください。
+  * GPUなしの環境で使用する場合: GPUを搭載していないマシンを使用する場合、docker-compose.yml内のjupyterをコメントアウトまたはcompose時にjupyter=0を追加してください。
 
 ## 始めるには
 
-### Clone
+### Git Clone
 
 下記のコマンドを実行してdockerを起動してください。
 
@@ -81,6 +81,13 @@ cp .env.example .env
 docker compose up -d --build
 ```
 
+GPUがない場合
+
+``` sh
+docker compose up -d --build --scale jupyter=0
+```
+
+>>>>>>> 81580dc6e3e33510854e0a42ea7144d2999147e8
 正常に動作すれば完了です。
 
 ## 環境
@@ -89,6 +96,10 @@ docker compose up -d --build
 
 * チケット管理にはClickUpを使用。
 * [ClickUpのURL](https://app.clickup.com/9003254465/v/f/90031831893/90030629633)
+* Guestアカウント
+  * login url: <https://app.clickup.com/9003254465/v/f/90031831893/90030629633>
+  * email: <s2045109@g.tohoku-gakuin.ac.jp>
+  * password: Optimguest1
 
 ### ファイル構成
 
@@ -105,3 +116,9 @@ docker compose up -d --build
 * server: Backend
 
 その他詳しい情報やファイル構成は各フォルダ内のREADME.mdを参照してください。
+
+## その他
+
+### 開発のヒント
+
+開発のルール: [RULE.md](./docs/RULE.md)

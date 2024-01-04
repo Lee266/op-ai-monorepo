@@ -2,7 +2,6 @@
 @startuml postgres
 hide circle
 
-
 entity "users" as users {
   id
   --
@@ -13,6 +12,14 @@ entity "users" as users {
   is_superuser (number)
   is_staff (number)
   is_active (number)
+  created_at
+}
+
+entity "mnists" as mnist {
+  id
+  --
+  classNumber (number unique)
+  image (image)
   created_at
 }
 

@@ -59,6 +59,19 @@ services:
         reservations:
           devices:
             - capabilities: [gpu]
+    tty: true
+    depends_on:
+      - selenium
+
+  selenium:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium-1
+    shm_size: 2gb
+    ports:
+      - 4444:4444
+      - 7900:7900
+    volumes:
+      - /dev/shm:/dev/shm
 
   database:
     build:
