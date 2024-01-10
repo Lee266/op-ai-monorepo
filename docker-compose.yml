@@ -16,7 +16,6 @@ services:
     command: yarn dev
 
   golang:
-    # platform: linux/x86_64
     build:
       context: .
       dockerfile: docker/backend/golang/Dockerfile
@@ -65,8 +64,8 @@ services:
 
   selenium:
     image: selenium/standalone-chrome:latest
-    container_name: selenium-1
-    shm_size: 2gb
+    container_name: selenium
+    shm_size: 4gb
     ports:
       - 4444:4444
       - 7900:7900
